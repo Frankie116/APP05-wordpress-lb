@@ -23,12 +23,10 @@ locals {
 
 resource "aws_instance" "my-server" {
   count                       = local.instance-count
-  # ami                       = data.aws_ami.my-ami-amazon2.id
   ami                         = aws_ami.my-ami-snapshot.id
   instance_type               = var.my-instance-type
   subnet_id                   = module.my-vpc.public_subnets[count.index % length(module.my-vpc.public_subnets)]
   vpc_security_group_ids      = [aws_security_group.my-sg-server1.id]
-  associate_public_ip_address = true
   key_name                    = var.my-private-key
   tags = {
     Name                      = "${var.my-servername}-0${count.index+1}" 

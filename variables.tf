@@ -77,7 +77,7 @@ variable my-pub-subnet-cidr-blocks {
   ]
 }
 
-# 2a-ec2-choose-ami.tf -------------------------------------------------------------
+# 2a-ec2.tf -------------------------------------------------------------
 variable my-instances-per-subnet {
   description = "Number of EC2 instances in each private subnet"
   type = number
@@ -93,12 +93,6 @@ variable my-instance-type {
 variable my-servername {
     default = "jenkins"
 }
-
-
-# # 2d-nic-and-eip.tf -------------------------------------------------------------
-# variable "my-existing-eip" {
-#     default = "my-default-eip"
-# }
 
 # 2e-keypair.tf -------------------------------------------------------------
 variable "my-private-key" {
@@ -135,13 +129,6 @@ variable "my-existing-r53-zone" {
 }
 
 
-
-# 09a-sg-rules -------------------------------------------------------------
-# variable "use-snapshot" {
-#   description = "'true' to use 'my-snapshot-latest' ami (should already exist) or 'false' to use a standard amazon linux ami."
-#   type        = bool
-#   default     = true
-# }
 
 variable "my-snapshot-name" {
   type        = string
