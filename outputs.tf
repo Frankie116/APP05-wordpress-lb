@@ -7,5 +7,10 @@ output my-ssh-details {
 
 output my-website-address {
   description          = "Full website addresss including port number"
-  value                = [aws_route53_record.my-r53-record.*.fqdn]
+  value                = [aws_route53_record.my-r53-record-server.*.fqdn]
+}
+
+output my-jumpbox-address {
+  description          = "Full website addresss including port number"
+  value                = [aws_route53_record.my-r53-record-jumpbox.*.fqdn]
 }

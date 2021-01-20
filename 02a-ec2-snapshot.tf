@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.8
+# version  1.9
 # Library: https://github.com/Frankie116/my-library.git
 # Creates a new ec2 instance
 # ---------------------------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ resource "aws_instance" "my-server" {
   count                       = local.instance-count
   ami                         = aws_ami.my-ami-snapshot.id
   instance_type               = var.my-instance-type
-  subnet_id                   = module.my-vpc.public_subnets[count.index % length(module.my-vpc.public_subnets)]
+  subnet_id                   = module.my-vpc.private_subnets[count.index % length(module.my-vpc.private_subnets)]
   vpc_security_group_ids      = [aws_security_group.my-sg-server.id]
   key_name                    = var.my-private-key
   associate_public_ip_address = true

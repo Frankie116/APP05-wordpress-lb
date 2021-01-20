@@ -77,7 +77,7 @@ variable my-pub-subnet-cidr-blocks {
   ]
 }
 
-# 2a-ec2.tf -------------------------------------------------------------
+# 2a-ec2-snapshot.tf -------------------------------------------------------------
 variable my-instances-per-subnet {
   description = "Number of EC2 instances in each private subnet"
   type = number
@@ -94,7 +94,7 @@ variable my-servername {
     default = "jenkins"
 }
 
-# 2e-keypair.tf -------------------------------------------------------------
+# 02g-keypair.tf -------------------------------------------------------------
 variable "my-private-key" {
     default = "my-priv-keyname"
 }
@@ -116,20 +116,21 @@ variable my-environment {
 }
 
 
-# 04c-sg-rules -------------------------------------------------------------
+# 04b-sg-rules-server.tf -------------------------------------------------------------
 variable "my-port-app1" {
   description           = "Port exposed by the docker image to redirect traffic to"
   default               = 8080
 }
 
 
-# 06a-route53.tf -----------------------------------------------------------
+# 06b-route53-zone.tf -----------------------------------------------------------
 variable "my-existing-r53-zone" {
     default             = "redacted.com"    # this variable should point to an exiting r53 hosted zone
 }
 
 
 
+# 12a-route53ebs-snapshot.tf -----------------------------------------------------------
 variable "my-snapshot-name" {
   type        = string
   default     = "snapshot-default"

@@ -6,20 +6,16 @@
 # ---------------------------------------------------------------------------------------------------
 
 # req:
-# 3a-eip.tf:  [data.aws_eip.my-eip.public_ip]
 
-data "aws_route53_zone" "my-r53zone" {
-  name            = var.my-existing-r53-zone
-}
 
-resource "aws_route53_record" "my-r53-record" {
-  count           = local.instance-count
+resource "aws_route53_record" "my-r53-record-jumpbox" {
+  count           = local.jumpbox-count
   zone_id         = data.aws_route53_zone.my-r53zone.zone_id
-  name            = "${var.my-servername}-0${count.index+1}.${data.aws_route53_zone.my-r53zone.name}"
+  name            = "my-jumpbox-0${count.index+1}.${data.aws_route53_zone.my-r53zone.name}"
   type            = "A"
 
   ttl             = "300"
-  records         = [aws_instance.my-server[count.index].public_ip]
+  records         = [aws_instance.my-jumpbox[count.index].public_ip]
 }
 
 
