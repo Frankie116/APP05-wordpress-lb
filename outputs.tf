@@ -1,16 +1,30 @@
+# ---------------------------------------------------------------------------------------------------
+# version  1.10
+# Library: https://github.com/Frankie116/my-library.git
+# outputs
+# ---------------------------------------------------------------------------------------------------
 
 
-output my-ssh-details {
-  value       = "ssh bitnami@xxxxx -i ${var.my-private-key}.pem"
-}
 
 
+# 06b-route53-record-lb.tf ----------------------------------------------------------
 output my-website-address {
   description          = "Full website addresss including port number"
-  value                = [aws_route53_record.my-r53-record-server.*.fqdn]
+  value                = " ${aws_route53_record.my-r53-record-lb.fqdn}:${var.my-port-app1}"
 }
 
+output ssh-server-details {
+  value       = " ssh bitnami@${aws_instance.my-server[0].private_ip}"
+}
+
+
+
+# 06d-route53-record-jumpbox.tf -----------------------------------------------------
 output my-jumpbox-address {
   description          = "Full website addresss including port number"
   value                = [aws_route53_record.my-r53-record-jumpbox.*.fqdn]
+}
+
+output ssh-jumpbox-details {
+  value       = "ssh -A ec2-user@my-jumpbox-01.${var.my-existing-r53-zone} -i ${var.my-private-key}.pem"
 }

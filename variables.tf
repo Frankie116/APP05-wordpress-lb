@@ -1,3 +1,11 @@
+# ---------------------------------------------------------------------------------------------------
+# version  1.10
+# Library: https://github.com/Frankie116/my-library.git
+# variables used in this project
+# ---------------------------------------------------------------------------------------------------
+
+
+
 variable "my-region-name" {
   description           = "The AWS region things are created in"
   default               = "London"
@@ -119,15 +127,30 @@ variable my-environment {
 # 04b-sg-rules-server.tf -------------------------------------------------------------
 variable "my-port-app1" {
   description           = "Port exposed by the docker image to redirect traffic to"
-  default               = 8080
+  default               = 80
 }
 
 
-# 06b-route53-zone.tf -----------------------------------------------------------
+# 05c-lb-tg ----------------------------------------------------------------
+variable "my-hc-path" {
+  default               = "/"
+}
+
+variable "my-hc-interval" {
+  default               = "30"
+}
+
+
+# 06a-route53-zone.tf ------------------------------------------------------------------
 variable "my-existing-r53-zone" {
     default             = "redacted.com"    # this variable should point to an exiting r53 hosted zone
 }
 
+
+# 06b-route53-record-lb.tf -------------------------------------------------------------
+variable "my-lb-hosted-zone" {
+    default             = "ZHREDACTEDK8"
+} 
 
 
 # 12a-route53ebs-snapshot.tf -----------------------------------------------------------

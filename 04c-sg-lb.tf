@@ -1,35 +1,24 @@
 # ---------------------------------------------------------------------------------------------------
 # version  1.10
 # Library: https://github.com/Frankie116/my-library.git
-# Creates a new standard amazon linux ami
+# Creates security groups
 # ---------------------------------------------------------------------------------------------------
 
-# req:
+#req:
 # 9b-random-string.tf - random_string.my-random-string.result
-# variables.tf        - var.my-tags (tbc)
+# 1a-vpc.tf           - module.my-vpc.vpc_id
 # variables.tf        - var.my-project-name
 # variables.tf        - var.my-environment
 
 
-data "aws_ami" "my-ami-amazon2" {
-  most_recent            = true
-  owners                 = ["amazon"]
-  filter {
-    name                 = "name"
-    values               = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
+resource "aws_security_group" "my-sg-lb" {
+  name                   = "my-sg-lb-${random_string.my-random-string.result}"
+  description            = "Security group for load balancer with HTTP ports open within VPC"
+  vpc_id                 = module.my-vpc.vpc_id
   tags                   = {
-    Name                 = "my-ami-amazon2-${random_string.my-random-string.result}"
+    Name                 = "my-sg-lb-${random_string.my-random-string.result}"
+    Terraform            = "true"
     Project              = var.my-project-name
     Environment          = var.my-environment
-    Terraform            = "true"
   }
 }
-
-
-
-# use in ec2 resource:
-# ami                    = data.aws_ami.my-ami-amazon2.id
-
-
-

@@ -1,13 +1,12 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.9
+# version  1.10
 # Library: https://github.com/Frankie116/my-library.git
 # Creates security groups
 # ---------------------------------------------------------------------------------------------------
 
 #req:
-# 1a-vpc.tf           - module.my-vpc.vpc_id
-# 1a-vpc.tf           - module.my-vpc.public_subnets_cidr_blocks
 # 9b-random-string.tf - random_string.my-random-string.result
+# 1a-vpc.tf           - module.my-vpc.vpc_id
 # variables.tf        - var.my-project-name
 # variables.tf        - var.my-environment
 

@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.9
+# version  1.10
 # Library: https://github.com/Frankie116/my-library.git
 # Creates security group rules
 # ---------------------------------------------------------------------------------------------------
 
 #req:
-# 4a-sg-server.tf     - aws_security_group.my-sg-lb.id
+# 4g-sg-jumpbox.tf    - aws_security_group.my-sg-jumpbox.id
 # variables.tf        - var.my-docker-port
 
 

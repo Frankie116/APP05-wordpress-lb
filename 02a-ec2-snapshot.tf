@@ -1,18 +1,19 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.9
+# version  1.10
 # Library: https://github.com/Frankie116/my-library.git
 # Creates a new ec2 instance
 # ---------------------------------------------------------------------------------------------------
 
 # req:
-# 1a-vpc.tf             - module.my-vpc.private_subnets[count.index]
-# 2c-ami-snapshot.tf    - aws_ami.my-ami-snapshot.id
-# 4a-sg-server.tf       - [aws_security_group.my-sg-server1.id]
-# variables.tf          - var.my-instances-per-subnet
-# variables.tf          - var.my-instance-type
-# variables.tf          - var.my-servername
-# variables.tf          - var.my-project-name
-# variables.tf          - var.my-environment
+# 1a-vpc.tf              - module.my-vpc.private_subnets
+# 02e-ami-snapshot.tf    - aws_ami.my-ami-snapshot.id
+# 04a-sg-server.tf       - [aws_security_group.my-sg-server.id]
+# variables.tf           - var.my-instances-per-subnet
+# variables.tf           - var.my-instance-type
+# variables.tf           - var.my-private-key
+# variables.tf           - var.my-servername
+# variables.tf           - var.my-project-name
+# variables.tf           - var.my-environment
 
 
 locals {
@@ -26,7 +27,7 @@ resource "aws_instance" "my-server" {
   subnet_id                   = module.my-vpc.private_subnets[count.index % length(module.my-vpc.private_subnets)]
   vpc_security_group_ids      = [aws_security_group.my-sg-server.id]
   key_name                    = var.my-private-key
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   tags = {
     Name                      = "${var.my-servername}-0${count.index+1}" 
     Project                   = var.my-project-name
