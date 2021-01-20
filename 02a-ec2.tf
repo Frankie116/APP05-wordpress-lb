@@ -19,7 +19,6 @@ locals {
   instance-count              = var.my-instances-per-subnet * length(module.my-vpc.private_subnets)
 }
 
-
 resource "aws_instance" "my-server" {
   count                       = local.instance-count
   ami                         = aws_ami.my-ami-snapshot.id
