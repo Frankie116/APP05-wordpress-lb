@@ -13,6 +13,6 @@ output my-ssh-details {
 #   value       = [aws_instance.my-server.*.public_ip]
 # }
 
-output my-server-eip {
-  value       = [aws_eip.my-eip.*.public_ip]
-}
+# output my-server-eip {
+#   value       = [data.aws_eip.my-eip-.*.public_ip]
+# }
