@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------
-# version  1.4
+# version  1.8
 # Library: https://github.com/Frankie116/my-library.git
 # Creates security groups
 # ---------------------------------------------------------------------------------------------------
@@ -12,12 +12,12 @@
 # variables.tf        - var.my-environment
 
 
-resource "aws_security_group" "my-sg-server1" {
-  name                   = "my-sg-server1-${random_string.my-random-string.result}"
+resource "aws_security_group" "my-sg-server" {
+  name                   = "my-sg-server-${random_string.my-random-string.result}"
   description            = "Security group for web-servers with HTTP ports open within VPC"
   vpc_id                 = module.my-vpc.vpc_id
   tags                   = {
-    Name                 = "my-sg-server1-${random_string.my-random-string.result}"
+    Name                 = "my-sg-server-${random_string.my-random-string.result}"
     Terraform            = "true"
     Project              = var.my-project-name
     Environment          = var.my-environment

@@ -1,18 +1,11 @@
 
 
-# output use-snapshot {
-#   value       = var.use-snapshot
-# }
-
 output my-ssh-details {
   value       = "ssh bitnami@xxxxx -i ${var.my-private-key}.pem"
 }
 
-# output instance-ids {
-#   description = "IDs of EC2 instances"
-#   value       = [aws_instance.my-server.*.public_ip]
-# }
 
-# output my-server-eip {
-#   value       = [data.aws_eip.my-eip-.*.public_ip]
-# }
+output my-website-address {
+  description          = "Full website addresss including port number"
+  value                = [aws_route53_record.my-r53-record.*.fqdn]
+}
