@@ -9,7 +9,6 @@
 # variables.tf        - var.my-snapshot-name
 
 
-
 data "aws_ebs_snapshot" "my-existing-snapshot" {
   most_recent           = true
   owners                = ["self"]

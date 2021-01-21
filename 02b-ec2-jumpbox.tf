@@ -26,7 +26,7 @@ resource "aws_instance" "my-jumpbox" {
   vpc_security_group_ids      = [aws_security_group.my-sg-jumpbox.id]
   key_name                    = var.my-private-key
   associate_public_ip_address = true
-  tags = {
+  tags                        = {
     Name                      = "my-jumpbox-0${count.index+1}" 
     Project                   = var.my-project-name
     Environment               = var.my-environment

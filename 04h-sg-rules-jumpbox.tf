@@ -9,7 +9,6 @@
 # variables.tf        - var.my-docker-port
 
 
-
 resource "aws_security_group_rule" "my-sg-irule-jumpbox" {
   description              = "allow only ssh port inbound from anywhere"
   security_group_id        = aws_security_group.my-sg-jumpbox.id
@@ -20,7 +19,6 @@ resource "aws_security_group_rule" "my-sg-irule-jumpbox" {
   cidr_blocks              = ["0.0.0.0/0"]
   depends_on = [aws_security_group.my-sg-jumpbox]
 }
-
 
 resource "aws_security_group_rule" "my-sg-erule-jumpbox" {
   description              = "allow any port to exit jumpbox to anywhere"

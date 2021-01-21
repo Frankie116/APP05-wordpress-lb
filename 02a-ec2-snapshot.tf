@@ -28,7 +28,7 @@ resource "aws_instance" "my-server" {
   vpc_security_group_ids      = [aws_security_group.my-sg-server.id]
   key_name                    = var.my-private-key
   associate_public_ip_address = false
-  tags = {
+  tags                        = {
     Name                      = "${var.my-servername}-0${count.index+1}" 
     Project                   = var.my-project-name
     Environment               = var.my-environment

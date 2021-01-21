@@ -83,3 +83,22 @@ Changelog-005
         06a-route53-zone.tf
         06b-route53-record-lb.tf
         07a-s3-bucket.tf
+
+Changelog-006
+ Refactored the following:
+        modified:   02a-ec2-snapshot.tf
+        modified:   02b-ec2-jumpbox.tf
+        modified:   02d-ami-amazon2.tf
+        modified:   02g-keypair.tf
+        modified:   04b-sg-rules-server.tf
+        modified:   04d-sg-rules-lb.tf
+        modified:   04h-sg-rules-jumpbox.tf
+        modified:   05a-lb-alb.tf
+        modified:   05b-lb-listeners.tf
+        modified:   06a-route53-zone.tf
+        modified:   06b-route53-record-lb.tf
+        modified:   06d-route53-record-jumpbox.tf
+        modified:   07a-s3-bucket.tf
+        modified:   12a-ebs-snapshot.tf
+        modified:   changelog.md
+        modified:   outputs.tf

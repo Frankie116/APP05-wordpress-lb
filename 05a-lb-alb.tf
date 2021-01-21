@@ -19,8 +19,8 @@ resource "aws_lb" "my-alb" {
   security_groups        = [aws_security_group.my-sg-lb.id]
   subnets                = module.my-vpc.public_subnets
   access_logs {
-    bucket  = aws_s3_bucket.my-s3-log-bucket.bucket
-    enabled = true
+    bucket               = aws_s3_bucket.my-s3-log-bucket.bucket
+    enabled              = true
   }
   tags                   = {
     Name                 = "my-alb-${random_string.my-random-string.result}"

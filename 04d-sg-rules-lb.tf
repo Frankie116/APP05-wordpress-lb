@@ -21,7 +21,16 @@ resource "aws_security_group_rule" "my-lb-ingress1" {
   depends_on = [aws_security_group.my-sg-lb,aws_security_group.my-sg-server]
 }
 
-
+resource "aws_security_group_rule" "my-lb-ingress2" {
+  description              = "allow only https inbound from anywhere"
+  security_group_id        = aws_security_group.my-sg-lb.id
+  type                     = "ingress"
+  protocol                 = "tcp"
+  from_port                = 443
+  to_port                  = 443
+  cidr_blocks              = ["0.0.0.0/0"]
+  depends_on = [aws_security_group.my-sg-lb,aws_security_group.my-sg-server]
+}
 resource "aws_security_group_rule" "my-lb-egress" {
   description              = "allow any port to exit alb to anywhere"
   security_group_id        = aws_security_group.my-sg-lb.id

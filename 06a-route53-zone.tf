@@ -8,7 +8,8 @@
 # req:
 # None
 
+
 data "aws_route53_zone" "my-r53zone" {
-  name            = var.my-existing-r53-zone
+  name       = var.my-existing-r53-zone
 }
 

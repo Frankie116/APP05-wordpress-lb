@@ -25,7 +25,6 @@ resource "aws_s3_bucket" "my-s3-log-bucket" {
   }
 }
 
-
 resource "aws_s3_bucket_policy" "my-s3-log-bucket" {
   bucket                = aws_s3_bucket.my-s3-log-bucket.id
   policy = <<POLICY
